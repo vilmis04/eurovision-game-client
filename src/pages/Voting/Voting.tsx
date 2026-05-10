@@ -58,11 +58,13 @@ export const Voting: React.FC = () => {
     isGetScoreListError ||
     isGetCountriesError ||
     isGetGeneralInfoError;
+
   const error =
     updateScoreError ||
     getScoreListError ||
     getCountriesError ||
     getGeneralInfoError;
+
   useErrorHandler({ error, isError });
 
   const timeLeft = useTimeLeft(generalInfo?.votingEnd);
@@ -94,9 +96,13 @@ export const Voting: React.FC = () => {
     refetchScoreList();
   }, [generalInfo?.gameType]);
 
-  const scoredCountries = scoreList?.filter(({ inFinal, position }) =>
-    generalInfo?.gameType === GameType.FINAL ? position : inFinal
-  ).length;
+  const scoredCountries = new Set(
+    scoreList
+      ?.filter(({ inFinal, position }) =>
+        generalInfo?.gameType === GameType.FINAL ? position : inFinal
+      )
+      .map((country) => country.country)
+  ).size;
 
   const notAvailableSpots = (scoreList || [])
     .filter(({ position }) => position)
