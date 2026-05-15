@@ -9,10 +9,11 @@ interface TopbarProps {
   endTime: Date | undefined;
   timeLeft: string;
   toggleOrderDrawer: () => void;
+  countryLimit: number | undefined;
 }
 
 const SEMI_LIMIT = 10;
-const FINAL_LIMIT = 26; // TODO: calculate the number of participants
+const FINAL_LIMIT = 26;
 
 export const Topbar: React.FC<TopbarProps> = ({
   gameType,
@@ -20,6 +21,7 @@ export const Topbar: React.FC<TopbarProps> = ({
   endTime,
   timeLeft,
   toggleOrderDrawer,
+  countryLimit = FINAL_LIMIT,
 }) => {
   const gameTypeMessage =
     (gameType &&
@@ -35,7 +37,7 @@ export const Topbar: React.FC<TopbarProps> = ({
     return endTime ? timeString : '';
   };
 
-  const selectionLimit = gameType === GameType.FINAL ? FINAL_LIMIT : SEMI_LIMIT;
+  const selectionLimit = gameType === GameType.FINAL ? countryLimit : SEMI_LIMIT;
 
   return (
     <Box>

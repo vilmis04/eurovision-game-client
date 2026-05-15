@@ -12,6 +12,7 @@ interface FinalVoteDrawerProps {
   countryCode: string | null;
   votingScore: GetScoresResponse | undefined;
   votingCountry: CountryResponse | undefined;
+  countryLimit: number | undefined;
 }
 
 export const FinalVoteDrawer: React.FC<FinalVoteDrawerProps> = ({
@@ -21,6 +22,7 @@ export const FinalVoteDrawer: React.FC<FinalVoteDrawerProps> = ({
   notAvailableSpots,
   votingScore,
   votingCountry,
+  countryLimit = 26,
 }) => {
   const [selectedPosition, setSelectedPosition] = useState<number>(0);
   const { setErrorMessage } = useContext(ErrorContext);
@@ -63,7 +65,7 @@ export const FinalVoteDrawer: React.FC<FinalVoteDrawerProps> = ({
         </Box>
       </Box>
       <Box sx={styles.voteGrid}>
-        {Array(26)
+        {Array(countryLimit)
           .fill(null)
           .map((_, index) => {
             const positionIndex = index + 1;
