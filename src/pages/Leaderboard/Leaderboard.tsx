@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { BackgroundContext } from '../../components/Layout/Layout';
-import { ExpandMore } from '@mui/icons-material';
+import ExpandMore from '@mui/icons-material/ExpandMore';
 import { styles } from './Leaderboard.styles';
 import { useGetLeaderboardQuery } from '../../api/group/groupApi';
 import { BronzeStar, GoldStar, SilverStar } from '../../components/icons/icons';

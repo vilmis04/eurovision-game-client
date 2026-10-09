@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const BASE_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:4300/api';
+const BASE_URL = import.meta.env.VITE_BASE_URL || '/api';
 
 export enum TagTypes {
   GROUP = 'GROUP',

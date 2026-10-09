@@ -1,4 +1,6 @@
-import { ContentCopy, DeleteOutline, Logout } from '@mui/icons-material';
+import ContentCopy from '@mui/icons-material/ContentCopy';
+import DeleteOutline from '@mui/icons-material/DeleteOutline';
+import Logout from '@mui/icons-material/Logout';
 import { Drawer, DrawerProps, MenuItem, Typography } from '@mui/material';
 import { styles } from './ContextMenu.styles';
 import { useLogoutMutation } from '../../../../api/auth/authApi';

@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from '@mui/material';
 import { FinalVoteProps } from '../CountryRow.types';
-import { ExpandMore } from '@mui/icons-material';
+import ExpandMore from '@mui/icons-material/ExpandMore';
 import { styles } from './FinalVote.styles';
 
 export const FinalVote: React.FC<FinalVoteProps> = ({

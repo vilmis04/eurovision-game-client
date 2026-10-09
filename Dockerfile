@@ -1,10 +1,15 @@
 # syntax=docker/dockerfile:1.7
 
-FROM node:22-alpine AS build
+FROM node:22.22.0-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN --mount=type=cache,target=/root/.npm npm ci
 COPY . .
+# VITE_* values are baked in at build time; mark them "build variable" in Coolify.
+# All optional: the API URL defaults to the relative path /api.
+ARG VITE_BASE_URL
+ARG VITE_POSTHOG_KEY
+ARG VITE_POSTHOG_HOST
 RUN npm run build
 
 FROM nginxinc/nginx-unprivileged:alpine AS runtime

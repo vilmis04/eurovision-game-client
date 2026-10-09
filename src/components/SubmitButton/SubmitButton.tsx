@@ -1,6 +1,6 @@
 import { Box, Button, ButtonProps, Typography } from '@mui/material';
 import { styles } from './SubmitButton.styles';
-import { ErrorOutline } from '@mui/icons-material';
+import ErrorOutline from '@mui/icons-material/ErrorOutline';
 import { Spinner } from '../Spinner/Spinner';
 
 interface SubmitButtonProps extends React.PropsWithChildren, ButtonProps {
