@@ -1,15 +1,26 @@
 const INVITE_INFO_LIST_LENGTH = 4;
 
-export const decodeInvite = (invite: string | null) => {
-  const inviteCode = invite ?? '';
-  const inviteData = window.atob(inviteCode).split(':');
-  const isInviteStructureValid = inviteData.length === INVITE_INFO_LIST_LENGTH;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [groupName, _, id] = inviteData;
+const INVALID_INVITE = {
+  isInviteStructureValid: false,
+  groupName: '',
+  id: NaN,
+};
 
-  return {
-    isInviteStructureValid,
-    groupName,
-    id: Number(id),
-  };
+export const decodeInvite = (invite: string | null) => {
+  try {
+    const inviteData = window.atob(invite ?? '').split(':');
+    const [groupName, , rawId] = inviteData;
+    const id = Number(rawId);
+    const isInviteStructureValid =
+      inviteData.length === INVITE_INFO_LIST_LENGTH &&
+      Number.isInteger(id) &&
+      id > 0;
+
+    return isInviteStructureValid
+      ? { isInviteStructureValid, groupName, id }
+      : INVALID_INVITE;
+  } catch {
+    // atob throws on input that is not valid base64
+    return INVALID_INVITE;
+  }
 };

@@ -118,7 +118,7 @@ export const GroupView = () => {
     deleteGroup({ id });
   };
   const handleBack = () => navigate(paths.groups);
-  const handleMore = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+  const handleMore = () => {
     toggleContextMenu();
   };
 
