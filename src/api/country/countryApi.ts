@@ -8,7 +8,6 @@ export const countryApi = baseApi.injectEndpoints({
     getCountries: build.query<CountryResponse[], CountryQueryParams>({
       query: (params) => ({
         url: countryDomain.countryList.build(params),
-        credentials: 'include',
       }),
     }),
   }),

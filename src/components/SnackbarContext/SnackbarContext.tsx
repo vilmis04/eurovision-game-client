@@ -15,7 +15,7 @@ const initialValues: InitialValues = {
   variant: 'success',
   message: '',
   onClose: () => {},
-  openSnackbar: (newMessage: string) => {},
+  openSnackbar: (_newMessage: string) => {},
 };
 
 export const SnackbarContext = createContext(initialValues);

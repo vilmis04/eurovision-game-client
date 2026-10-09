@@ -31,7 +31,11 @@ export const Leaderboard = () => {
   const toggleGroupMenu = () => setIsGroupMenuOpen((isOpen) => !isOpen);
   const selectedGroup = leaderboardData?.groups[filter];
 
-  const ranking = [<GoldStar />, <SilverStar />, <BronzeStar />];
+  const ranking = [
+    <GoldStar key="gold" />,
+    <SilverStar key="silver" />,
+    <BronzeStar key="bronze" />,
+  ];
   const showRanking =
     leaderboardData &&
     Object.values(leaderboardData.playerList).some(({ score }) => score !== 0);

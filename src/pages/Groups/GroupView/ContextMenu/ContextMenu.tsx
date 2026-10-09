@@ -3,6 +3,8 @@ import { Drawer, DrawerProps, MenuItem, Typography } from '@mui/material';
 import { styles } from './ContextMenu.styles';
 import { useLogoutMutation } from '../../../../api/auth/authApi';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { paths } from '../../../../paths';
 import { useErrorHandler } from '../../../../components/ErrorOverlay/useErrorHandler';
 
 interface ContextMenuProps extends DrawerProps {
@@ -18,6 +20,7 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
   deleteGroup,
   isOwner,
 }) => {
+  const navigate = useNavigate();
   const [logout, { isSuccess: isLogoutSuccess, isError, error }] =
     useLogoutMutation();
 
@@ -25,7 +28,7 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
 
   useEffect(() => {
     if (isLogoutSuccess) {
-      window.location.reload();
+      navigate(paths.login);
     }
   }, [isLogoutSuccess]);
 
@@ -56,13 +59,13 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
     >
       {...isOwner
         ? [
-            <MenuItem onClick={handleCopyLink}>
+            <MenuItem key="copy" onClick={handleCopyLink}>
               <Typography variant="body1" sx={styles.row}>
                 <ContentCopy />
                 Copy invite link
               </Typography>
             </MenuItem>,
-            <MenuItem onClick={handleDeleteGroup}>
+            <MenuItem key="delete" onClick={handleDeleteGroup}>
               <Typography variant="body1" sx={styles.row}>
                 <DeleteOutline /> Delete Group
               </Typography>

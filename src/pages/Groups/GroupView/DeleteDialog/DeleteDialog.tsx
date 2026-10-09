@@ -16,7 +16,7 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = ({
       Delete group?
     </Typography>
     <Typography variant="body1" sx={[styles.text, styles.mainText]}>
-      The group can't be recovered once it's deleted.
+      The group can&apos;t be recovered once it&apos;s deleted.
     </Typography>
     <Box sx={styles.buttonWrapper}>
       <Button onClick={handleClose} variant="text" sx={styles.cancelButton}>

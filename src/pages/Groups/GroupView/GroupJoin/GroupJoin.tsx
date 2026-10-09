@@ -69,7 +69,7 @@ export const GroupJoin = () => {
             {`Join "${groupName}"?`}
           </Typography>
           <Typography variant="body1" sx={styles.infoText}>
-            To compete with this group's members, join the group.
+            To compete with this group&apos;s members, join the group.
           </Typography>
           <Button variant="contained" onClick={handleClick} sx={styles.button}>
             <Spinner isLoading={isAuthFetching}>Join Group</Spinner>

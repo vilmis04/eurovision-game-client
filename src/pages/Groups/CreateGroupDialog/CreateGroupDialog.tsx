@@ -8,7 +8,6 @@ import * as Yup from 'yup';
 import ErrorIcon from '@mui/icons-material/ErrorOutlineTwoTone';
 import { useNavigate } from 'react-router-dom';
 import { paths } from '../../../paths';
-import { useErrorHandler } from '../../../components/ErrorOverlay/useErrorHandler';
 import {
   Background,
   GradientType,
