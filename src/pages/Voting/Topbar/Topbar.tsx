@@ -1,4 +1,4 @@
-import { ExpandMore } from '@mui/icons-material';
+import ExpandMore from '@mui/icons-material/ExpandMore';
 import { Box, Button, Typography } from '@mui/material';
 import { styles } from './Topbar.styles';
 import { GameType } from '../../../types';

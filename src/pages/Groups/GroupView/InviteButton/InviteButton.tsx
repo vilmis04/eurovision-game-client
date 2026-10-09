@@ -1,4 +1,4 @@
-import { ContentCopy } from '@mui/icons-material';
+import ContentCopy from '@mui/icons-material/ContentCopy';
 import { Box, Button, Typography } from '@mui/material';
 import { styles } from './InviteButton.styles';
 

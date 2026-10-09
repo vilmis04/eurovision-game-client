@@ -1,4 +1,5 @@
-import { CheckCircle, RadioButtonUnchecked } from '@mui/icons-material';
+import CheckCircle from '@mui/icons-material/CheckCircle';
+import RadioButtonUnchecked from '@mui/icons-material/RadioButtonUnchecked';
 import { SemiVoteProps } from '../CountryRow.types';
 import { Box, FormControlLabel, Typography } from '@mui/material';
 import { styles } from './SemiVote.styles';

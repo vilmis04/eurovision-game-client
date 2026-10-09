@@ -24,8 +24,7 @@
       "vitest",
       "vitest/globals",
       "vitest/importMeta"
-    ],
-    "outDir": "../../dist/out-tsc"
+    ]
   },
   "exclude": [
     "src/**/*.spec.ts",

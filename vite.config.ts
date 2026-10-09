@@ -4,12 +4,12 @@ import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  root: __dirname,
-  cacheDir: '../../node_modules/.vite/apps/game-ui',
-
   server: {
     port: 3000,
     host: '0.0.0.0',
+    proxy: {
+      '/api': { target: 'http://localhost:4300', changeOrigin: true },
+    },
   },
 
   preview: {
@@ -22,6 +22,15 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     reportCompressedSize: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom', 'react-router-dom'],
+          state: ['@reduxjs/toolkit', 'react-redux'],
+          mui: ['@mui/material', '@emotion/react', '@emotion/styled'],
+        },
+      },
+    },
     commonjsOptions: {
       transformMixedEsModules: true,
     },
@@ -29,9 +38,6 @@ export default defineConfig({
 
   test: {
     globals: true,
-    cache: {
-      dir: '../../node_modules/.vitest',
-    },
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
 

@@ -1,4 +1,5 @@
-import { ArrowBack, MoreVert } from '@mui/icons-material';
+import ArrowBack from '@mui/icons-material/ArrowBack';
+import MoreVert from '@mui/icons-material/MoreVert';
 import { Box, Typography } from '@mui/material';
 import { getStyles } from './Navbar.styles';
 
