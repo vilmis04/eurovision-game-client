@@ -14,6 +14,7 @@ import { Auth } from './components/Auth/Auth';
 import { ErrorContext } from './components/ErrorOverlay/ErrorContext';
 import { useErrorOverlay } from './components/ErrorOverlay/useErrorOverlay';
 import { GlobalStyles } from './components/GlobalStyles/GlobalStyles';
+import { setUnauthorizedHandler } from './api/baseApi';
 import { Spinner } from './components/Spinner/Spinner';
 
 const Groups = lazy(() =>
@@ -84,6 +85,13 @@ const router = createBrowserRouter([
     index: true,
   },
 ]);
+
+setUnauthorizedHandler(() => {
+  const { pathname } = router.state.location;
+  if (pathname !== paths.login && pathname !== paths.signUp) {
+    router.navigate(paths.login);
+  }
+});
 
 export const App = () => {
   const snackbar = useSnackbar();

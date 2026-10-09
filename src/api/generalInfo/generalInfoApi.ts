@@ -15,7 +15,6 @@ export const generalInfoApi = baseApi.injectEndpoints({
     getGeneralInfo: build.query<GeneralInfoResponse, void>({
       query: () => ({
         url: generalInfoDomain.admin,
-        credentials: 'include',
       }),
     }),
   }),

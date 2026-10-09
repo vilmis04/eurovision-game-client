@@ -13,7 +13,6 @@ const scoreApi = baseApi.injectEndpoints({
       query: () => ({
         url: scoreDomain.score,
         method: Methods.GET,
-        credentials: 'include',
       }),
       providesTags: [TagTypes.SCORE],
     }),
@@ -22,7 +21,6 @@ const scoreApi = baseApi.injectEndpoints({
         url: scoreDomain.score,
         method: Methods.PATCH,
         body,
-        credentials: 'include',
       }),
       invalidatesTags: [TagTypes.SCORE],
     }),

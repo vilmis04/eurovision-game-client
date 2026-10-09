@@ -15,7 +15,7 @@ import { Toast } from '../Toast/Toast';
 import { ErrorOverlay } from '../ErrorOverlay/ErrorOverlay';
 import { Background, GradientType } from '../Background/Background';
 
-export const BackgroundContext = createContext((variant: GradientType) => {});
+export const BackgroundContext = createContext((_variant: GradientType) => {});
 
 export const Layout = () => {
   const { pathname } = useLocation();

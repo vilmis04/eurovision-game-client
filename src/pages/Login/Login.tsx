@@ -34,7 +34,12 @@ const loginValidationSchema = Yup.object().shape({
 export const Login = () => {
   const navigate = useNavigate();
   const [queryParams] = useSearchParams();
-  const inviteCode = queryParams.get('invite');
+  const rawInviteCode = queryParams.get('invite');
+  // Ignore malformed invites so login/sign-up still works.
+  const inviteCode =
+    rawInviteCode && decodeInvite(rawInviteCode).isInviteStructureValid
+      ? rawInviteCode
+      : null;
   const [
     login,
     {
