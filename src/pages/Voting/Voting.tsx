@@ -154,7 +154,7 @@ export const Voting: React.FC = () => {
             endTime={generalInfo?.votingEnd}
             timeLeft={timeLeft}
             toggleOrderDrawer={toggleOrderDrawer}
-            countryLimit={countryList.length}
+            countryLimit={countryList?.length ?? 0}
           />
           <Box sx={styles.countries}>
             {orderedCountryList.map(({ name, code, artist, song }) => {
@@ -190,7 +190,7 @@ export const Voting: React.FC = () => {
           notAvailableSpots={notAvailableSpots}
           votingScore={votingScore}
           votingCountry={votingCountry}
-          countryLimit={countryList.length}
+          countryLimit={countryList?.length ?? 0}
         />
         <OrderDrawer
           isOpen={isOrderDrawerOpen}
