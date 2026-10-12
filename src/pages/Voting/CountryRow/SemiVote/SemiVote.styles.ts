@@ -1,5 +1,3 @@
-import { i } from 'vitest/dist/reporters-MmQN-57K';
-
 export const styles = {
   icon: {
     color: 'common.white',

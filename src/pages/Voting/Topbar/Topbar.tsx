@@ -37,7 +37,8 @@ export const Topbar: React.FC<TopbarProps> = ({
     return endTime ? timeString : '';
   };
 
-  const selectionLimit = gameType === GameType.FINAL ? countryLimit : SEMI_LIMIT;
+  const selectionLimit =
+    gameType === GameType.FINAL ? countryLimit : SEMI_LIMIT;
 
   return (
     <Box>

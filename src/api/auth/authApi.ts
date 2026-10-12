@@ -10,36 +10,32 @@ const authApi = baseApi.injectEndpoints({
       query: () => ({
         url: authDomain.isAuthenticated,
         method: Methods.GET,
-        credentials: 'include',
-        providesTags: [TagTypes.AUTHORISED],
         responseHandler: 'text',
       }),
+      providesTags: [TagTypes.AUTHORISED],
     }),
     signUp: build.mutation<void, SignUpRequestBody>({
       query: (body) => ({
         url: authDomain.signUp,
         method: Methods.POST,
         body,
-        credentials: 'include',
-        invalidatesTags: [TagTypes.AUTHORISED],
       }),
+      invalidatesTags: Object.values(TagTypes),
     }),
     login: build.mutation<void, LoginRequestBody>({
       query: (body) => ({
         url: authDomain.login,
         method: Methods.POST,
         body,
-        credentials: 'include',
-        invalidatesTags: [TagTypes.AUTHORISED],
       }),
+      invalidatesTags: Object.values(TagTypes),
     }),
     logout: build.mutation<void, void>({
       query: () => ({
         url: authDomain.logout,
         method: Methods.POST,
-        credentials: 'include',
-        invalidatesTags: Object.values(TagTypes),
       }),
+      invalidatesTags: Object.values(TagTypes),
     }),
   }),
   overrideExisting: false,

@@ -31,7 +31,10 @@ export const Leaderboard = () => {
   const toggleGroupMenu = () => setIsGroupMenuOpen((isOpen) => !isOpen);
   const selectedGroup = leaderboardData?.groups[filter];
 
+  // Only one element is rendered (ranking[position - 1]), never the array.
+  /* eslint-disable react/jsx-key */
   const ranking = [<GoldStar />, <SilverStar />, <BronzeStar />];
+  /* eslint-enable react/jsx-key */
   const showRanking =
     leaderboardData &&
     Object.values(leaderboardData.playerList).some(({ score }) => score !== 0);
