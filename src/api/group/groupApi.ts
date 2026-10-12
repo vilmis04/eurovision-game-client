@@ -32,6 +32,7 @@ export const groupApi = baseApi.injectEndpoints({
         url: groupDomain.group.build(id),
         method: Methods.GET,
       }),
+      providesTags: [TagTypes.GROUP],
     }),
     deleteGroup: build.mutation<void, TGroupParams>({
       query: ({ id }) => ({
@@ -59,6 +60,7 @@ export const groupApi = baseApi.injectEndpoints({
         url: groupDomain.getLeaderboard.build(groupId),
         method: Methods.GET,
       }),
+      providesTags: [TagTypes.GROUP],
     }),
   }),
 });

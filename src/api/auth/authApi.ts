@@ -20,7 +20,7 @@ const authApi = baseApi.injectEndpoints({
         method: Methods.POST,
         body,
       }),
-      invalidatesTags: [TagTypes.AUTHORISED],
+      invalidatesTags: Object.values(TagTypes),
     }),
     login: build.mutation<void, LoginRequestBody>({
       query: (body) => ({
@@ -28,7 +28,7 @@ const authApi = baseApi.injectEndpoints({
         method: Methods.POST,
         body,
       }),
-      invalidatesTags: [TagTypes.AUTHORISED],
+      invalidatesTags: Object.values(TagTypes),
     }),
     logout: build.mutation<void, void>({
       query: () => ({

@@ -59,13 +59,15 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
     >
       {...isOwner
         ? [
-            <MenuItem key="copy" onClick={handleCopyLink}>
+            // eslint-disable-next-line react/jsx-key
+            <MenuItem onClick={handleCopyLink}>
               <Typography variant="body1" sx={styles.row}>
                 <ContentCopy />
                 Copy invite link
               </Typography>
             </MenuItem>,
-            <MenuItem key="delete" onClick={handleDeleteGroup}>
+            // eslint-disable-next-line react/jsx-key
+            <MenuItem onClick={handleDeleteGroup}>
               <Typography variant="body1" sx={styles.row}>
                 <DeleteOutline /> Delete Group
               </Typography>

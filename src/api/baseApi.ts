@@ -22,13 +22,6 @@ const UNAUTHORIZED_ALLOWED_URLS: string[] = [
   endpoints.authDomain.isAuthenticated,
 ];
 
-let onUnauthorized: () => void = () => {};
-
-/** Registered by the app so the base query can redirect without importing the router. */
-export const setUnauthorizedHandler = (handler: () => void) => {
-  onUnauthorized = handler;
-};
-
 const rawBaseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,
   credentials: 'include',
@@ -42,12 +35,12 @@ const baseQueryWithAuth: BaseQueryFn<
   const result = await rawBaseQuery(args, api, extraOptions);
   const url = typeof args === 'string' ? args : args.url;
 
-  if (
-    result.error?.status === 401 &&
-    !UNAUTHORIZED_ALLOWED_URLS.includes(url)
-  ) {
-    onUnauthorized();
-    api.dispatch(baseApi.util.resetApiState());
+  // A plain-text 401 body is reported as PARSING_ERROR, so read the HTTP status.
+  const isUnauthorized = result.meta?.response?.status === 401;
+
+  if (isUnauthorized && !UNAUTHORIZED_ALLOWED_URLS.includes(url)) {
+    // Re-check the session: <Auth> redirects to login when that check fails.
+    api.dispatch(baseApi.util.invalidateTags([TagTypes.AUTHORISED]));
   }
 
   return result;

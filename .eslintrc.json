@@ -18,7 +18,11 @@
   "rules": {
     "@typescript-eslint/no-empty-function": "off",
     "react/prop-types": "off",
-    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+    "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_" }
+    ]
   },
   "overrides": [
     {
