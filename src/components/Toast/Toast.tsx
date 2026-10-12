@@ -2,8 +2,7 @@ import { Snackbar, Alert, Typography } from '@mui/material';
 import { useContext } from 'react';
 import { SnackbarContext } from '../SnackbarContext/SnackbarContext';
 import { styles } from './Toast.styles';
-import CheckCircle from '@mui/icons-material/CheckCircle';
-import Error from '@mui/icons-material/Error';
+import { CheckCircle, Error } from '@mui/icons-material';
 
 export const Toast = () => {
   const { isOpen, variant, message, onClose } = useContext(SnackbarContext);
